@@ -35,4 +35,14 @@ public class BloomFilterTest {
         int hashvalue2 = filter.hash2(73);
         assertEquals(2, hashvalue2);
     }
+
+    @Test
+    public void testPut(){
+        int hashVal1 = filter.hash1(5);
+        int hashVal2 = filter.hash2(5);
+        filter.add(5);
+
+        assertEquals(true, filter.getSet().get(filter.hash1(5)));
+        assertEquals(true, filter.getSet().get(filter.hash2(5)));
+    }
 }

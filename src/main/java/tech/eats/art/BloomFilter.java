@@ -20,11 +20,28 @@ public class BloomFilter {
         this.size = size;
     }
 
+    public void add(int x){
+        set.set(hash1(x));
+        set.set(hash2(x));
+    }
+
+    public BitSet getSet() {
+        return set;
+    }
+
+    public boolean isMember(int x){
+        if(set.get(hash1(x)) && set.get(hash2(x))){
+            return true;
+        }
+        return false;
+    }
+
+
     public int hash1(int x){
         String binString = Integer.toBinaryString(x);
         String oddBits = "";
 
-        //Take odd-numbered bits from the right in the binary representatino of x
+        //Take odd-numbered bits from the right in the binary representation of x
         for(int i = binString.length() - 1; i >= 0; i -= 2){
             oddBits = binString.charAt(i) + oddBits;
         }
@@ -33,9 +50,6 @@ public class BloomFilter {
         int oddInt = Integer.parseInt(oddBits, 2);
         //Result is i modulo size of ste
         return oddInt % size;
-
-
-
     }
 
     public int hash2(int x){
