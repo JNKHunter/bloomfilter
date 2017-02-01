@@ -18,5 +18,16 @@ This is possible because the bloom filter requires very little memory to store m
 There are lots of great libraries out there that provide bloom filters (Google's guava being one of them). The
 implementation here is very naive, and will be improved over time.
 
+### Important properties of a bloom filter:
+- Probability of a false positive depends on the density of the 1's in the array and the 3 of hash functions.
+The probability of a collision (false positive) is (Fraction of 1's)^(# of hash functions).
+As the number of 1's increases, obviously the chances of a collision increase.
+
+- The number of 1's is approximately the number of elements inserted * number of hash functions
+Collisions lower this number slightly
+
+
+
+
 For a great introduction to bloom filters:
 https://www.youtube.com/watch?v=qBTdukbzc78
