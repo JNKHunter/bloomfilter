@@ -36,7 +36,7 @@ public class BloomFilter {
         return false;
     }
 
-
+    //Naive hash implementation
     public int hash1(int x){
         String binString = Integer.toBinaryString(x);
         String oddBits = "";
